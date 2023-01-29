@@ -27,13 +27,11 @@ while player_pts < const.points_to_win and sheldon_pts < const.points_to_win:
         add_sheldon_pt = False
     else:
         add_player_pt = get_round_winner(player_choice, sheldon_choice)
-        if int(add_player_pt) == 1:
+        if add_player_pt:
             player_pts += 1
-            add_player_pt = True
             add_sheldon_pt = False
         else:
             sheldon_pts += 1
-            add_player_pt = False
             add_sheldon_pt = True
 
     create_scoreboard(player, player_pts, sheldon_pts, player_choice,
