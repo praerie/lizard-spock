@@ -1,23 +1,15 @@
-import random
 from util.input_checker import check_input
-from util.score_tracker import get_score
 import src.constants as const
-import src.mutables as mut
 
 
-def play_round():
-    mut.sheldon_choice = random.choice(const.move)
-    mut.player_choice = make_move()
-    get_score()
+def print_round_menu(round_counter):
+    round_menu = f"\nRound #{round_counter}:\n"
+    round_menu += "{:<12}{:<12}{:<12}".format("(1) rock", "(2) paper", "(3) scissors") + "\n"
+    round_menu += "{:^36}".format("(4) lizard \t (5) Spock")
+    print(round_menu)
 
 
 def make_move():
-    round_board = f"\nRound #{mut.round_counter}:\n"
-    round_board += "{:<12}{:<12}{:<12}".format("(1) rock", "(2) paper", "(3) scissors") + "\n"
-    round_board += "{:^36}".format("(4) lizard \t (5) spock")
-
-    print(round_board)
-
     player_move = check_input(const.move)
 
     if player_move == "1" or player_move == "rock":
@@ -32,29 +24,73 @@ def make_move():
         return const.move[4]
 
 
-def print_winner():
+def get_round_winner(player_choice, sheldon_choice):
+    if (player_choice, sheldon_choice) in const.win_lose_combos:
+        return True
+    else:
+        return False
+
+
+def create_scoreboard(player, player_pts, sheldon_pts, player_choice,
+                      sheldon_choice, add_player_pt, add_sheldon_pt):
+    board = "+{}+".format("-" * const.scoreboard_width) + "\n"
+    board += "| " + "{:<30}{:>9}{:<1}{:>10}".format(f"{player.title()}: {player_choice}",
+                                                    "+", int(add_player_pt),
+                                                    f"{player_pts}") + " |\n"
+    board += "| " + "{:<30}{:>9}{:<1}{:>10}".format(f"Sheldon: {sheldon_choice}",
+                                                    "+", int(add_sheldon_pt),
+                                                    f"{sheldon_pts}") + " |\n"
+    board += "| " + "{:^50}".format(interpret_round(player_choice, sheldon_choice)) + " |\n"
+    board += "+{}+".format("-" * const.scoreboard_width)
+
+    print(board)
+
+
+def interpret_round(player_choice, sheldon_choice):
+    if player_choice == sheldon_choice:
+        return f"It's a tie!"
+    elif (player_choice, sheldon_choice) in const.win_lose_combos:
+        # finding pos of winning combo in win_lose_combos tuple
+        # to correspond to pos in actions tuple
+        combo = (player_choice, sheldon_choice)
+        combo_pos = const.win_lose_combos.index(combo)
+
+        return f"{player_choice.upper()} {const.actions[combo_pos]} {sheldon_choice.upper()}!"
+    else:
+        # finding pos of lose-win combo in win_lose_combos tuple (inverse of win-lose pairs)
+        # to correspond to pos in actions tuple
+        combo = (sheldon_choice, player_choice)
+        combo_pos = const.win_lose_combos.index(combo)
+
+        return f"{sheldon_choice.upper()} {const.actions[combo_pos]} {player_choice.upper()}!"
+    
+
+def print_winner(player, player_pts):
     print("\n")
     win_board = "+{}+".format("*~" * const.win_board_width) + "\n"
-    win_board += ">>" + "{:^50}".format("!!! BAZINGA !!!") + "<<\n"
+    win_board += ">>>" + "{:^48}".format("!!! BAZINGA !!!") + "<<<\n"
 
-    if mut.player_points == const.points_to_win:
-        win_board += ">>" + "{:^50}".format(f"{mut.player.title()} outsmarted Sheldon!") + "<<\n"
+    if player_pts == const.points_to_win:
+        win_board += ">>>" + "{:^48}".format(f"{player.title()} outsmarted Sheldon!") + "<<<\n"
     else:
-        win_board += ">>" + "{:^50}".format(f"Sheldon outsmarted {mut.player.title()}!") + "<<\n"
+        win_board += ">>>" + "{:^48}".format(f"Sheldon outsmarted {player.title()}!") + "<<<\n"
 
     win_board += "+{}+".format("*~" * const.win_board_width) + "\n\n"
 
     print(win_board)
 
 
-def get_character():
-    print("Choose your character: \n"
-          "(1) Leonard \t (2) Amy \n"
-          "(3) Raj \t\t (4) Bernadette \n"
-          "(5) Penny \t\t (6) Stuart \n"
-          "(7) Howard \t\t (8) Leslie \n"
-          "(9) Professor Proton")
+def print_character_menu():
+    character_menu = "Choose your character to begin playing: \n"
+    character_menu += "{:<14}{:<14}".format("(1) Leonard", "(2) Amy") + "\n"
+    character_menu += "{:<14}{:<14}".format("(3) Raj", "(4) Bernadette") + "\n"
+    character_menu += "{:<14}{:<14}".format("(5) Penny", "(6) Stuart") + "\n"
+    character_menu += "{:<14}{:<14}".format("(7) Howard", "(8) Leslie") + "\n"
+    character_menu += "(9) Professor Proton"
+    print(character_menu)
 
+
+def get_character():
     player_name = check_input(const.character)
 
     if player_name == "1" or player_name == "leonard":
