@@ -15,7 +15,7 @@ as an aspiring software developer.
 ## Installation
 
     git clone https://github.com/praerie/lizard-spock
-    cd big-bang-hand-game
+    cd lizard-spock
     python main.py
 
 ## How to Play
