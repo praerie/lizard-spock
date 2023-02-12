@@ -1,5 +1,5 @@
 from util.input_checker import check_input
-import src.constants as const
+import src.const as const
 
 
 def print_round_menu(round_counter):

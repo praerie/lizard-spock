@@ -1,6 +1,6 @@
 from src.game import print_character_menu, get_character, print_round_menu, \
     make_move, get_round_winner, create_scoreboard, print_winner
-import src.constants as const
+import src.const as const
 import random
 
 

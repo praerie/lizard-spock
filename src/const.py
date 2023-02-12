@@ -1,4 +1,4 @@
-title = "Big Bang Hand Game"
+title = "Lizard Spock"
 
 character = ("leonard", "amy", "raj", "bernadette", "penny",
              "stuart", "howard", "leslie", "professor proton")
@@ -12,7 +12,7 @@ win_lose_combos = [("rock", "scissors"), ("rock", "lizard"),
                    ("paper", "rock"), ("paper", "spock",)]
 
 # corresponds to win_lose_combos
-actions = ("crushes", "flattens",
+actions = ("crushes", "crushes",
            "poisons", "eats",
            "smashes", "vaporizes",
            "cuts", "decapitates",
