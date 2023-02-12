@@ -1,4 +1,4 @@
-# Big Bang Hand Game
+# Lizard Spock
 
 A console version of "Rock Paper Scissors Lizard Spock," a reinvention of the 
 classic hand game à la Sheldon Cooper from the series Big Bang Theory. 
@@ -14,7 +14,7 @@ as an aspiring software developer.
 
 ## Installation
 
-    git clone https://github.com/praerie/big-bang-hand-game
+    git clone https://github.com/praerie/lizard-spock
     cd big-bang-hand-game
     python main.py
 
