@@ -11,6 +11,16 @@ scissors = "scissors"
 lizard = "lizard"
 spock = "spock"
 
+leonard = "leonard"
+amy = "amy"
+raj = "raj"
+bernadette = "bernadette"
+penny = "penny"
+stuart = "stuart"
+howard = "howard"
+leslie = "leslie"
+professor_proton = "professor proton"
+
 win_lose_combos = [("rock", "scissors"), ("rock", "lizard"),
                    ("lizard", "spock"), ("lizard", "paper"),
                    ("spock", "scissors"), ("spock", "rock"),

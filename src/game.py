@@ -82,32 +82,32 @@ def print_winner(player, player_pts):
 
 def print_character_menu():
     character_menu = "Choose your character to begin playing: \n"
-    character_menu += "{:<14}{:<14}".format("(1) Leonard", "(2) Amy") + "\n"
-    character_menu += "{:<14}{:<14}".format("(3) Raj", "(4) Bernadette") + "\n"
-    character_menu += "{:<14}{:<14}".format("(5) Penny", "(6) Stuart") + "\n"
-    character_menu += "{:<14}{:<14}".format("(7) Howard", "(8) Leslie") + "\n"
-    character_menu += "(9) Professor Proton"
+    character_menu += "{:<14}{:<14}".format(f"(1) {const.leonard}", f"(2) {const.amy}") + "\n"
+    character_menu += "{:<14}{:<14}".format(f"(3) {const.raj}", f"(4) {const.bernadette}") + "\n"
+    character_menu += "{:<14}{:<14}".format(f"(5) {const.penny}", f"(6) {const.stuart}") + "\n"
+    character_menu += "{:<14}{:<14}".format(f"(7) {const.howard}", f"(8) {const.leslie}") + "\n"
+    character_menu += f"(9) {const.professor_proton}"
     print(character_menu)
 
 
 def get_character():
     player_name = check_input(const.character)
 
-    if player_name == "1" or player_name == "leonard":
+    if player_name == "1" or player_name == const.leonard:
         return const.character[0]
-    elif player_name == "2" or player_name == "amy":
+    elif player_name == "2" or player_name == const.amy:
         return const.character[1]
-    elif player_name == "3" or player_name == "raj":
+    elif player_name == "3" or player_name == const.raj:
         return const.character[2]
-    elif player_name == "4" or player_name == "bernadette":
+    elif player_name == "4" or player_name == const.bernadette:
         return const.character[3]
-    elif player_name == "5" or player_name == "penny":
+    elif player_name == "5" or player_name == const.penny:
         return const.character[4]
-    elif player_name == "6" or player_name == "stuart":
+    elif player_name == "6" or player_name == const.stuart:
         return const.character[5]
-    elif player_name == "7" or player_name == "howard":
+    elif player_name == "7" or player_name == const.howard:
         return const.character[6]
-    elif player_name == "8" or player_name == "leslie":
+    elif player_name == "8" or player_name == const.leslie:
         return const.character[7]
-    elif player_name == "9" or player_name == "professor proton":
+    elif player_name == "9" or player_name == const.professor_proton:
         return const.character[8]
