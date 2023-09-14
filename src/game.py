@@ -4,23 +4,23 @@ import src.const as const
 
 def print_round_menu(round_counter):
     round_menu = f"\nRound #{round_counter}:\n"
-    round_menu += "{:<12}{:<12}{:<12}".format("(1) rock", "(2) paper", "(3) scissors") + "\n"
-    round_menu += "{:^36}".format("(4) lizard \t (5) Spock")
+    round_menu += "{:<12}{:<12}{:<12}".format(f"(1) {const.rock}", f"(2) {const.paper}", f"(3) {const.scissors}") + "\n"
+    round_menu += "{:^36}".format(f"(4) {const.lizard} \t (5) {const.spock}")
     print(round_menu)
 
 
 def make_move():
     player_move = check_input(const.move)
 
-    if player_move == "1" or player_move == "rock":
+    if player_move == "1" or player_move == const.rock:
         return const.move[0]
-    elif player_move == "2" or player_move == "paper":
+    elif player_move == "2" or player_move == const.paper:
         return const.move[1]
-    elif player_move == "3" or player_move == "scissors":
+    elif player_move == "3" or player_move == const.scissors:
         return const.move[2]
-    elif player_move == "4" or player_move == "lizard":
+    elif player_move == "4" or player_move == const.lizard:
         return const.move[3]
-    elif player_move == "5" or player_move == "spock":
+    elif player_move == "5" or player_move == const.spock:
         return const.move[4]
 
 

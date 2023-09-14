@@ -5,6 +5,12 @@ character = ("leonard", "amy", "raj", "bernadette", "penny",
 
 move = ("rock", "paper", "scissors", "lizard", "spock")
 
+rock = "rock"
+paper = "paper"
+scissors = "scissors"
+lizard = "lizard"
+spock = "spock"
+
 win_lose_combos = [("rock", "scissors"), ("rock", "lizard"),
                    ("lizard", "spock"), ("lizard", "paper"),
                    ("spock", "scissors"), ("spock", "rock"),
