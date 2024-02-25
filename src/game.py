@@ -28,11 +28,14 @@ def get_round_winner(player_choice, sheldon_choice):
 
 def create_scoreboard(player, player_pts, sheldon_pts, player_choice,
                       sheldon_choice, add_player_pt, add_sheldon_pt):
+    player_choice_str = moves_map.get(player_choice, "")
+    sheldon_choice_str = moves_map.get(sheldon_choice, "")
+
     board = "+{}+".format("-" * scoreboard_width) + "\n"
-    board += "| " + "{:<30}{:>9}{:<1}{:>10}".format(f"{player.title()}: {player_choice}",
+    board += "| " + "{:<30}{:>9}{:<1}{:>10}".format(f"{player.title()}: {player_choice_str}",
                                                     "+", int(add_player_pt),
                                                     f"{player_pts}") + " |\n"
-    board += "| " + "{:<30}{:>9}{:<1}{:>10}".format(f"Sheldon: {sheldon_choice}",
+    board += "| " + "{:<30}{:>9}{:<1}{:>10}".format(f"Sheldon: {sheldon_choice_str}",
                                                     "+", int(add_sheldon_pt),
                                                     f"{sheldon_pts}") + " |\n"
     board += "| " + "{:^50}".format(interpret_round(player_choice, sheldon_choice)) + " |\n"
@@ -43,7 +46,7 @@ def create_scoreboard(player, player_pts, sheldon_pts, player_choice,
 
 def interpret_round(player_choice, sheldon_choice):
     player_choice_str = moves_map.get(player_choice, "")
-    sheldon_choice_str = moves_map.get(sheldon_choice,)
+    sheldon_choice_str = moves_map.get(sheldon_choice, "")
 
     if player_choice == sheldon_choice:
         return f"It's a tie!"
