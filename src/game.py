@@ -92,6 +92,7 @@ class InputError(Exception):
 def get_character():
     try:
         player_name = check_input(character_map)
+        print(f"Best of luck, {character_map[player_name]}!")
         return character_map[player_name]
     except InputError as e:
         print(f"Error: {e}")
