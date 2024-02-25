@@ -3,14 +3,13 @@
 A console version of "Rock Paper Scissors Lizard Spock," a reinvention of the 
 classic hand game à la Sheldon Cooper from the series Big Bang Theory. 
 
-<picture>
- <img alt="diagram of game's rules" src="https://static.wikia.nocookie.net/bigbangtheory/images/7/7d/RPSLS.png">
-</picture>
+<div align="center">
+ <img alt="diagram of game rules" src="https://static.wikia.nocookie.net/bigbangtheory/images/7/7d/RPSLS.png">
+</div>
 
 ## Motivation
 
-A fun, challenging project to advance in my Python-learning journey 
-as an aspiring software developer.
+A fun and challenging project to advance in my Python-learning journey.
 
 ## Installation
 
