@@ -1,11 +1,10 @@
 from src.game import print_character_menu, get_character, print_round_menu, \
     make_move, get_round_winner, create_scoreboard, print_winner
-import src.const as const
-from src.const import moves_map
+from src.const import title, moves_map, points_to_win
 import random
 
 
-print(f"\nBattle Sheldon in {const.title}!\n")
+print(f"\nBattle Sheldon in {title}!\n")
 
 print_character_menu()
 player = get_character()
@@ -16,7 +15,7 @@ round_counter = 0
 add_player_pt = False
 add_sheldon_pt = False
 
-while player_pts < const.points_to_win and sheldon_pts < const.points_to_win:
+while player_pts < points_to_win and sheldon_pts < points_to_win:
     round_counter += 1
     print_round_menu(round_counter)
 
