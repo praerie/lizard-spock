@@ -1,6 +1,7 @@
 from src.game import print_character_menu, get_character, print_round_menu, \
     make_move, get_round_winner, create_scoreboard, print_winner
 import src.const as const
+from src.const import moves_map
 import random
 
 
@@ -19,7 +20,7 @@ while player_pts < const.points_to_win and sheldon_pts < const.points_to_win:
     round_counter += 1
     print_round_menu(round_counter)
 
-    sheldon_choice = random.choice(const.move)
+    sheldon_choice = random.choice(list(moves_map.keys()))
     player_choice = make_move()
 
     if player_choice == sheldon_choice:

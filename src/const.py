@@ -1,38 +1,44 @@
 title = "Lizard Spock"
 
-character = ("leonard", "amy", "raj", "bernadette", "penny",
-             "stuart", "howard", "leslie", "professor proton")
+moves_map = {
+    "1": "rock",
+    "2": "paper",
+    "3": "scissors",
+    "4": "lizard",
+    "5": "spock"
+}
 
-move = ("rock", "paper", "scissors", "lizard", "spock")
+character_map = {
+    "1": "Leonard", "2": "Amy", "3": "Raj", "4": "Bernadette",
+    "5": "Penny", "6": "Stuart", "7": "Howard",
+    "8": "Leslie", "9": "Professor Proton"
+}
 
-rock = "rock"
-paper = "paper"
-scissors = "scissors"
-lizard = "lizard"
-spock = "spock"
+win_lose_combos = [
+    ("1", "3"),  # rock vs. scissors
+    ("1", "4"),  # rock vs. lizard
+    ("4", "5"),  # lizard vs. spock
+    ("4", "2"),  # lizard vs. paper
+    ("5", "3"),  # spock vs. scissors
+    ("5", "1"),  # spock vs. rock
+    ("3", "2"),  # scissors vs. paper
+    ("3", "4"),  # scissors vs. lizard
+    ("2", "1"),  # paper vs. rock
+    ("2", "5")   # paper vs. spock
+]
 
-leonard = "leonard"
-amy = "amy"
-raj = "raj"
-bernadette = "bernadette"
-penny = "penny"
-stuart = "stuart"
-howard = "howard"
-leslie = "leslie"
-professor_proton = "professor proton"
-
-win_lose_combos = [("rock", "scissors"), ("rock", "lizard"),
-                   ("lizard", "spock"), ("lizard", "paper"),
-                   ("spock", "scissors"), ("spock", "rock"),
-                   ("scissors", "paper"), ("scissors", "lizard"),
-                   ("paper", "rock"), ("paper", "spock",)]
-
-# corresponds to win_lose_combos
-actions = ("crushes", "crushes",
-           "poisons", "eats",
-           "smashes", "vaporizes",
-           "cuts", "decapitates",
-           "covers", "disproves")
+actions = (
+    "crushes",      # rock crushes scissors
+    "crushes",      # rock crushes lizard
+    "poisons",      # lizard poisons spock
+    "eats",         # lizard eats paper
+    "vaporizes",    # spock vaporizes scissors
+    "vaporizes",    # spock vaporizes rock
+    "smashes",      # scissors smashes paper
+    "decapitates",  # scissors decapitates lizard
+    "covers",       # paper covers rock
+    "disproves"     # paper disproves spock
+)
 
 points_to_win = 3
 
