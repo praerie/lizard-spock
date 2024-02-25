@@ -3,6 +3,11 @@ from src.const import character_map, moves_map, win_lose_combos, actions, \
     scoreboard_width, win_board_width, points_to_win
 
 
+class InputError(Exception):
+    """Raised when input does not match dictionary key or value"""
+    pass
+
+
 def print_round_menu(round_counter):
     round_menu = f"\nRound #{round_counter}:\n"
     for key, value in moves_map.items():
@@ -26,10 +31,14 @@ def get_round_winner(player_choice, sheldon_choice):
         return False
 
 
+def get_choice_str(choice):
+    return moves_map.get(choice, "")
+
+
 def create_scoreboard(player, player_pts, sheldon_pts, player_choice,
                       sheldon_choice, add_player_pt, add_sheldon_pt):
-    player_choice_str = moves_map.get(player_choice, "")
-    sheldon_choice_str = moves_map.get(sheldon_choice, "")
+    player_choice_str = get_choice_str(player_choice)
+    sheldon_choice_str = get_choice_str(sheldon_choice)
 
     board = "+{}+".format("-" * scoreboard_width) + "\n"
     board += "| " + "{:<30}{:>9}{:<1}{:>10}".format(f"{player.title()}: {player_choice_str}",
@@ -45,8 +54,10 @@ def create_scoreboard(player, player_pts, sheldon_pts, player_choice,
 
 
 def interpret_round(player_choice, sheldon_choice):
-    player_choice_str = moves_map.get(player_choice, "")
-    sheldon_choice_str = moves_map.get(sheldon_choice, "")
+    player_choice_str = get_choice_str(player_choice).upper()
+    sheldon_choice_str = get_choice_str(sheldon_choice).upper()
+
+    result_template = "{} {} {}!"
 
     if player_choice == sheldon_choice:
         return f"It's a tie!"
@@ -55,13 +66,13 @@ def interpret_round(player_choice, sheldon_choice):
         combo_index = win_lose_combos.index((player_choice, sheldon_choice))
         # finding corresponding action
         action = actions[combo_index]
-        return f"{player_choice_str.upper()} {action} {sheldon_choice_str.upper()}!"
+        return result_template.format(player_choice_str, action, sheldon_choice_str)
     else:
         # finding index of losing combo (inverse of winning combo)
         combo_index = win_lose_combos.index((sheldon_choice, player_choice))
         # finding corresponding action
         action = actions[combo_index]
-        return f"{sheldon_choice_str.upper()} {action} {player_choice_str.upper()}!"
+        return result_template.format(sheldon_choice_str, action, player_choice_str)
     
 
 def print_winner(player, player_pts):
@@ -85,9 +96,6 @@ def print_character_menu():
         character_menu += f"({key}) {value}\n"
     print(character_menu)
 
-class InputError(Exception):
-    """Raised when input does not match dictionary key or value"""
-    pass
 
 def get_character():
     try:
