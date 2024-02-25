@@ -1,9 +1,8 @@
 import string
-from typing import List, Tuple
 
 
 class InputError(Exception):
-    """Raised when input does not fall within range or does not correspond to tuple value"""
+    """Raised when input does not match dictionary key or value"""
     pass
 
 
